@@ -4,19 +4,27 @@
     "slug": "financiapp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "icon": "./assets/images/icon.png",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/images/splash-screen.svg",
+      "resizeMode": "contain"
     },
     "ios": {
       "supportsTablet": true
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/PlayfairDisplay.ttf",
+            "./assets/fonts/Montserrat.ttf",
+            "./assets/fonts/SourceSans3.ttf"
+          ]
+        }
+      ]
+    ]
   }
 }

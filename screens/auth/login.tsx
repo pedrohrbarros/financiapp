@@ -1,60 +1,27 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
+import { Switch, useTheme } from 'react-native-paper';
+import { useAppTheme } from '../../hooks/use-theme';
 
 const LoginScreen: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSubscribe = () => {
-    alert(`Email: ${email}\nPassword: ${password}`);
-  };
+  const paperTheme = useTheme();
+  const { isDark, toggleTheme } = useAppTheme();
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-        autoCapitalize="none"
+    <View
+      style={{
+        backgroundColor: paperTheme.colors.background,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Switch
+        value={isDark}
+        onValueChange={toggleTheme}
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
-      <Button title="Subscribe" onPress={handleSubscribe} />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16,
-    backgroundColor: '#fff',
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 24,
-    fontWeight: 'bold',
-  },
-  input: {
-    width: '100%',
-    maxWidth: 300,
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: 4,
-    marginBottom: 16,
-    paddingHorizontal: 8,
-  },
-});
 
 export default LoginScreen; 
