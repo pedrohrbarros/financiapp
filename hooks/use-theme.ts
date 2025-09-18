@@ -1,65 +1,48 @@
-import React from 'react';
-import { create } from 'zustand'
-import { MD3LightTheme, MD3DarkTheme } from 'react-native-paper';
-import { useColorScheme } from 'react-native';
+import { DefaultTheme } from "react-native-paper";
 
-export const light_theme = {
-    ...MD3LightTheme,
-    colors: {
-      ...MD3LightTheme.colors,
-      primary: '#0F2D25',
-      background: '#237348',
-      surface: '#FFFFFF',
-      onSurface: '#0F2D25',
-      onBackground: '#0F2D25',
-    },
-    custom: {
-      font: '#0F2D25',
-      background: '#E6F2EF',
-      containerBackground: '#FFFFFF',
+declare global {
+  namespace ReactNativePaper {
+    interface Theme {
+      custom: {
+        background: {
+          container: string;
+          input: string;
+          view: string;
+        };
+        font: {
+          light: string;
+          dark: string;
+        };
+        outline: string;
+        underline: string;
+        button: {
+          primary: string;
+          secondary: string;
+        };
+      };
     }
-  };
-  
-  export const dark_theme = {
-    ...MD3DarkTheme,
-    colors: {
-      ...MD3DarkTheme.colors,
-      primary: '#E6F2EF',
-      background: '#308653',
-      surface: '#1C4036',
-      onSurface: '#E6F2EF',
-      onBackground: '#E6F2EF',
-    },
-    custom: {
-      font: '#E6F2EF',
-      background: '#0F2D25',
-      containerBackground: '#1C4036',
-    }
-  };
-
-interface ThemeState {
-    isDark: boolean;
-    toggleTheme: () => void;
   }
+}
 
-export const useTheme = create<ThemeState>((set, get) => ({
-    isDark: false,
-    toggleTheme: () => set((state) => ({ isDark: !state.isDark })),
-  }))
-
-export const useAppTheme = () => {
-  const { isDark, toggleTheme } = useTheme();
-  const systemColorScheme = useColorScheme();
-  
-  React.useEffect(() => {
-    useTheme.setState({ isDark: systemColorScheme === 'dark' });
-  }, [systemColorScheme]);
-
-  const theme = isDark ? dark_theme : light_theme;
-  
-  return {
-    isDark,
-    toggleTheme,
-    theme,
-  };
+const theme = {
+  ...DefaultTheme,
+  custom: {
+    background: {
+      container: '#308653',
+      input: '#FFFFFF',
+      view: '#1e293b',
+    },
+    font: {
+      light: "#FFFFFF",
+      dark: "#000000"
+    },
+    outline: "#FFFFFF",
+    underline: "#000000",
+    button: {
+      primary: "#2563EB",
+      secondary: "#F59E0B"
+    }
+  },
 };
+
+export default theme;

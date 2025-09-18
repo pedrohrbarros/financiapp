@@ -1,10 +1,9 @@
 import { registerRootComponent } from 'expo';
 import { PaperProvider } from 'react-native-paper';
-import { useAppTheme } from './hooks/use-theme';
 import App from './App';
+import theme from './hooks/use-theme';
 
 const MainApp = () => {
-  const { theme } = useAppTheme();
   
   return (
     <PaperProvider theme={theme}>

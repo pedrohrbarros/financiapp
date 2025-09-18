@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { View, Image, KeyboardAvoidingView, Platform, Text } from 'react-native';
-import { TextInput, useTheme, IconButton, Button } from 'react-native-paper';
+import { TextInput, Button, useTheme, Icon } from 'react-native-paper';
 
 const LoginScreen: React.FC = () => {
-  const paperTheme = useTheme();
+
+  const theme = useTheme() as any;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -11,7 +12,7 @@ const LoginScreen: React.FC = () => {
   return (
     <KeyboardAvoidingView style={{ 
       flex: 1, 
-      backgroundColor: paperTheme.colors.background,
+      backgroundColor: theme.custom.background.container,
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
@@ -21,7 +22,7 @@ const LoginScreen: React.FC = () => {
     keyboardVerticalOffset={Platform.OS === 'ios' ? -140 : 0}>
       
       <Image
-        source={require('../../assets/images/splash-icon.png')}
+        source={require('../../assets/images/icon.png')}
         style={{ width: 200, height: 200 }}
         resizeMode="contain"
       />
@@ -31,55 +32,68 @@ const LoginScreen: React.FC = () => {
         gap: 20
       }}>
         <TextInput
-          label={<Text style={{ color: paperTheme.colors.primary }}>E-mail</Text>}
-          placeholder="E-mail"
+          label={<Text style={{ color: theme.custom.font.dark }}>E-mail</Text>}
+          placeholder="johndoe@example.com"
           value={email}
           onChangeText={setEmail}
-          mode="outlined"
-          outlineStyle={{ borderColor: paperTheme.colors.primary }}
-          placeholderTextColor={paperTheme.colors.primary}
-          textColor={paperTheme.colors.primary}
-          style={{ width: '100%' }}
+          mode="flat"
+          activeUnderlineColor={theme.custom.underline}
+          underlineColor={theme.custom.underline}
+          outlineStyle={{ borderColor: theme.custom.outline }}
+          textColor={theme.custom.font.dark}
+          style={{ width: '100%', backgroundColor: theme.custom.background.input }}
           keyboardType="email-address"
           autoCapitalize="none"
         />
         <TextInput
-          label={<Text style={{ color: paperTheme.colors.primary }}>Password</Text>}
-          placeholder="Password"
+          label={<Text style={{ color: theme.custom.font.dark }}>Password</Text>}
           value={password}
           onChangeText={setPassword}
-          mode="outlined"
+          mode="flat"
+          activeUnderlineColor={theme.custom.underline}
+          underlineColor={theme.custom.underline}
           secureTextEntry={!showPassword}
-          outlineStyle={{ borderColor: paperTheme.colors.primary }}
-          placeholderTextColor={paperTheme.colors.primary}
-          textColor={paperTheme.colors.primary}
-          style={{ width: '100%' }}
+          outlineStyle={{ borderColor: theme.custom.outline }}
+          placeholderTextColor={theme.custom.font.dark}
+          textColor={theme.custom.font.dark}
+          style={{ width: '100%', backgroundColor: theme.custom.background.input }}
           right={
             <TextInput.Icon 
               icon={showPassword ? 'eye-off' : 'eye'}
               onPress={() => setShowPassword(!showPassword)}
-              color={paperTheme.colors.primary}
+              color={theme.custom.font.dark}
             />
           }
         />
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           <Button
-            mode="contained"
+            mode="elevated"
             onPress={() => {}}
-            style={{ width: '48%', borderRadius: 2 }}
-            labelStyle={{ color: paperTheme.colors.surface }}
+            style={{
+              width: '48%',
+              borderRadius: 15,
+              backgroundColor: theme.custom.button.primary,
+             }}
+            icon="login"
+            labelStyle={{ color: theme.custom.font.light }}
           >
-            <Text style={{ color: paperTheme.colors.surface }}>Login</Text>
+            <Text style={{ 
+              color: theme.custom.font.light,
+              fontWeight: 'bold'
+            }}>Login</Text>
           </Button>
           <Button
-            mode="contained"
+            mode="elevated"
             onPress={() => {}}
-            style={{ width: '48%', borderRadius: 2,
+            style={{
+              width: '48%',
+              borderRadius: 15,
+              backgroundColor: theme.custom.button.secondary,
              }}
-            labelStyle={{ color: paperTheme.colors.surface }}
+            labelStyle={{ color: theme.custom.font.dark }}
+            icon="account-plus"
           >
-            <Text style={{ color: paperTheme.colors.surface }}>Register</Text>
-
+            <Text style={{ color: theme.custom.font.dark }}>Register</Text>
           </Button>
         </View>
       </View>
