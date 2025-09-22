@@ -39,8 +39,8 @@ const theme = {
     outline: "#FFFFFF",
     underline: "#000000",
     button: {
-      primary: "#2563EB",
-      secondary: "#F59E0B"
+      primary: "#339989",
+      secondary: "#337CA0"
     }
   },
 };

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { View, Image, KeyboardAvoidingView, Platform, Text } from 'react-native';
-import { TextInput, Button, useTheme, Icon } from 'react-native-paper';
+import { TextInput, Button, useTheme, Icon, IconButton } from 'react-native-paper';
 
 const LoginScreen: React.FC = () => {
 
-  const theme = useTheme() as any;
+  const theme = useTheme();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -90,11 +90,46 @@ const LoginScreen: React.FC = () => {
               borderRadius: 15,
               backgroundColor: theme.custom.button.secondary,
              }}
-            labelStyle={{ color: theme.custom.font.dark }}
+            labelStyle={{ color: theme.custom.font.light }}
             icon="account-plus"
           >
-            <Text style={{ color: theme.custom.font.dark }}>Register</Text>
+            <Text style={{ color: theme.custom.font.light }}>Register</Text>
           </Button>
+        </View>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: 10,
+            marginTop: 20,
+          }}
+        >
+          <IconButton
+            icon="google"
+            iconColor={theme.custom.font.light}
+            mode="contained"
+            style={{
+              backgroundColor: "#EA4335",
+            }}
+          />
+          <IconButton
+            icon="apple"
+            iconColor={theme.custom.font.light}
+            mode="contained"
+            style={{
+              backgroundColor: "#000000",
+            }}
+          />
+          <IconButton
+            icon="instagram"
+            iconColor={theme.custom.font.light}
+            mode="contained"
+            style={{
+              backgroundColor: "#E1306C",
+            }}
+          />
         </View>
       </View>
     </KeyboardAvoidingView>
