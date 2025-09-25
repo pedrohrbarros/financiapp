@@ -11,6 +11,6 @@ const firebase_config = {
   measurementId: "G-CBVTE6J03V"
 };
 
-const app = initializeApp(firebase_config);
+initializeApp(firebase_config);
 
-const auth = getAuth(app);
+getAuth(app);

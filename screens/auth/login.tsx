@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { View, Image, KeyboardAvoidingView, Platform, Text } from 'react-native';
-import { TextInput, Button, useTheme, Icon, IconButton } from 'react-native-paper';
+import { TextInput, Button, IconButton } from 'react-native-paper';
+import theme from '../../hooks/use-theme';
 
 const LoginScreen: React.FC = () => {
 
-  const theme = useTheme();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -12,7 +12,7 @@ const LoginScreen: React.FC = () => {
   return (
     <KeyboardAvoidingView style={{ 
       flex: 1, 
-      backgroundColor: theme.custom.background.container,
+      backgroundColor: theme.background.container,
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
@@ -32,36 +32,36 @@ const LoginScreen: React.FC = () => {
         gap: 20
       }}>
         <TextInput
-          label={<Text style={{ color: theme.custom.font.dark }}>E-mail</Text>}
+          label={<Text style={{ color: theme.font.dark }}>E-mail</Text>}
           placeholder="johndoe@example.com"
           value={email}
           onChangeText={setEmail}
           mode="flat"
-          activeUnderlineColor={theme.custom.underline}
-          underlineColor={theme.custom.underline}
-          outlineStyle={{ borderColor: theme.custom.outline }}
-          textColor={theme.custom.font.dark}
-          style={{ width: '100%', backgroundColor: theme.custom.background.input }}
+            activeUnderlineColor={theme.underline}
+          underlineColor={theme.underline}
+          outlineStyle={{ borderColor: theme.outline }}
+          textColor={theme.font.dark}
+          style={{ width: '100%', backgroundColor: theme.background.input }}
           keyboardType="email-address"
           autoCapitalize="none"
         />
         <TextInput
-          label={<Text style={{ color: theme.custom.font.dark }}>Password</Text>}
+          label={<Text style={{ color: theme.font.dark }}>Password</Text>}
           value={password}
           onChangeText={setPassword}
           mode="flat"
-          activeUnderlineColor={theme.custom.underline}
-          underlineColor={theme.custom.underline}
+          activeUnderlineColor={theme.underline}
+          underlineColor={theme.underline}
           secureTextEntry={!showPassword}
-          outlineStyle={{ borderColor: theme.custom.outline }}
-          placeholderTextColor={theme.custom.font.dark}
-          textColor={theme.custom.font.dark}
-          style={{ width: '100%', backgroundColor: theme.custom.background.input }}
+          outlineStyle={{ borderColor: theme.outline }}
+          placeholderTextColor={theme.font.dark}
+          textColor={theme.font.dark}
+          style={{ width: '100%', backgroundColor: theme.background.input }}
           right={
             <TextInput.Icon 
               icon={showPassword ? 'eye-off' : 'eye'}
               onPress={() => setShowPassword(!showPassword)}
-              color={theme.custom.font.dark}
+              color={theme.font.dark}
             />
           }
         />
@@ -72,13 +72,13 @@ const LoginScreen: React.FC = () => {
             style={{
               width: '48%',
               borderRadius: 15,
-              backgroundColor: theme.custom.button.primary,
+              backgroundColor: theme.button.primary,
              }}
             icon="login"
-            labelStyle={{ color: theme.custom.font.light }}
+            labelStyle={{ color: theme.font.light }}
           >
             <Text style={{ 
-              color: theme.custom.font.light,
+              color: theme.font.light,
               fontWeight: 'bold'
             }}>Login</Text>
           </Button>
@@ -88,12 +88,12 @@ const LoginScreen: React.FC = () => {
             style={{
               width: '48%',
               borderRadius: 15,
-              backgroundColor: theme.custom.button.secondary,
+              backgroundColor: theme.button.secondary,
              }}
-            labelStyle={{ color: theme.custom.font.light }}
+            labelStyle={{ color: theme.font.light }}
             icon="account-plus"
           >
-            <Text style={{ color: theme.custom.font.light }}>Register</Text>
+            <Text style={{ color: theme.font.light }}>Register</Text>
           </Button>
         </View>
         <View
@@ -108,7 +108,7 @@ const LoginScreen: React.FC = () => {
         >
           <IconButton
             icon="google"
-            iconColor={theme.custom.font.light}
+            iconColor={theme.font.light}
             mode="contained"
             style={{
               backgroundColor: "#EA4335",
@@ -116,7 +116,7 @@ const LoginScreen: React.FC = () => {
           />
           <IconButton
             icon="apple"
-            iconColor={theme.custom.font.light}
+            iconColor={theme.font.light}
             mode="contained"
             style={{
               backgroundColor: "#000000",
@@ -124,7 +124,7 @@ const LoginScreen: React.FC = () => {
           />
           <IconButton
             icon="instagram"
-            iconColor={theme.custom.font.light}
+            iconColor={theme.font.light}
             mode="contained"
             style={{
               backgroundColor: "#E1306C",
