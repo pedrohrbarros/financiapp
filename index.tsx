@@ -1,18 +1,15 @@
 import { registerRootComponent } from 'expo';
 import { PaperProvider } from 'react-native-paper';
 import App from './App';
-import theme from './hooks/use-theme';
+import './config';
 
 const MainApp = () => {
   
   return (
-    <PaperProvider theme={theme}>
+    <PaperProvider>
       <App />
     </PaperProvider>
   );
 };
 
-// registerRootComponent calls AppRegistry.registerComponent('main', () => App);
-// It also ensures that whether you load the app in Expo Go or in a native build,
-// the environment is set up appropriately
 registerRootComponent(MainApp);
