@@ -32,6 +32,7 @@ yarn-error.*
 *.pem
 
 # Environment
+.env
 env
 /env
 .env/
