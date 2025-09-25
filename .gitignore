@@ -9,8 +9,6 @@ dist/
 web-build/
 expo-env.d.ts
 
-# Firebase
-firebase-config.js
 
 # Native
 .kotlin/
@@ -33,8 +31,13 @@ yarn-error.*
 .DS_Store
 *.pem
 
-# local env files
-.env*.local
+# Environment
+env
+/env
+.env/
+config
+/config
+.config/
 
 # typescript
 *.tsbuildinfo
